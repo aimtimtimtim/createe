@@ -1,0 +1,37 @@
+@import "@/variables";
+.day {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  background-color: $black-800;
+  color: $black-500;
+  padding: 12px;
+  border-radius: 12px;
+  min-height: 135px;
+  font-size: 22px;
+}
+
+.date {
+  font-size: 24px;
+  font-weight: 400;
+  color: $black-450;
+}
+.add{
+  transition: transform 2s ease-in-out;
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  justify-content: center;
+  align-items: center;
+  height: 64px;
+  width: 64px;
+  padding: 10px;
+  border: 1px dashed $black-450;
+  border-radius: 50%;
+  border-spacing: 100px;
+
+
+}

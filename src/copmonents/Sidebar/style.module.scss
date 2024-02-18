@@ -12,6 +12,25 @@
   border: 1px solid $black-600;
 }
 .logo{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.mark{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.topElement, .bottomElement{
+  background-color: white;
+  width: 24px;
+  height: 8px;
+  border-radius: 100px;
+}
+.bottomElement{
+  width: 16px;
+}
+.logoText{
   font-size: 22px;
   font-weight: bold;
 }

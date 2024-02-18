@@ -1,34 +1,71 @@
 import React, {useState} from 'react';
 import {ChevronRight, ChevronLeft} from 'lucide-react';
 import {useSelector} from "react-redux";
+
+import DaysOfWeek from "../DaysOfWeek/DaysOfWeek.jsx";
 import Day from "../Days/Day/Day.jsx";
 import DayEmpty from "../Days/DayEmpty/DayEmpty.jsx";
 import styles from './style.module.scss'
-
+import calendarForRender from "../../utils/daysForRender.js";
 
 const Calendar = () => {
-	const months = useSelector(state => state.months.months)
 	const currentMonth = new Date().getMonth()
 	const currentDate = new Date().getDate()
-	console.log(currentDate)
+	
+	const months = useSelector(state => state.months.months)
+	
+	const [monthToChange, setMonthToChange] = useState(currentMonth)
+	const firstDayOfMonth = new Date(2024, monthToChange, 1).getDay()
+	const calendarDays = calendarForRender(months[monthToChange].days, firstDayOfMonth)
 	
 	
-	return (
-		<div className={styles.calendar}>
+	const currentDayOfWeek = new Date().getDay();
+
+	
+	
+	const handleNextMonth = () => {
+		if (monthToChange < 11) {
+			setMonthToChange(prevMonth => prevMonth + 1)
+		}
+	}
+	const handlePrevMonth = () => {
+		if (monthToChange > 0) {
+			setMonthToChange(prevMonth => prevMonth - 1)
+		}
+	}
+	
+	
+	return (<div className={styles.calendar}>
 		<div className={styles.header}>
-			<button className={`${styles.button}`}><ChevronLeft/></button>
+			<button
+				className={`${styles.button} ${monthToChange === 0 ? styles.disabled : ''}`}
+				onClick={() => {
+				handlePrevMonth()}}><ChevronLeft/>
+			</button>
 			
-			<span className={styles.month}>February, 2024</span>
+			<span className={styles.month}>{months[monthToChange].name}, 2024</span>
 			
-			<button className={`${styles.button}`}><ChevronRight/></button>
+			<button
+				className={`${styles.button} ${monthToChange === 11 ? styles.disabled : ''}`}
+				onClick={() => {
+				handleNextMonth()}}><ChevronRight/>
+			</button>
 		</div>
 		
 		<div className={styles.days}>
-			{Array.from({length: months[currentMonth].days}).map((_, i)=>(
-				i + 1 === currentDate ? <Day day={i + 1}/> : <DayEmpty day={i + 1}/>
-			))}
-			
+			{calendarDays.map(day => (
+				day === null ? <p></p> : (
+					(day === currentDate) && (monthToChange === currentMonth) ?
+						<Day
+							day={day}
+							currentMonth={currentMonth}
+							monthToChange={monthToChange}
+							currentDate={currentDate}/> :
+						<DayEmpty day={day}/>
+				)))}
+		
 		</div>
+		<DaysOfWeek currentDayOfWeek={currentDayOfWeek}/>
 	</div>);
 };
 

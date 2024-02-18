@@ -3,7 +3,13 @@ import styles from './style.module.scss'
 const Sidebar = () => {
     return (
         <div className={styles.sidebar}>
-            <span className={styles.logo}>createe.</span>
+            <div className={styles.logo}>
+                <div className={styles.mark}>
+                    <span className={styles.topElement}></span>
+                    <span className={styles.bottomElement}></span>
+                </div>
+                <span className={styles.logoText}>createe.</span>
+            </div>
             <div className={styles.sidebarContent}>
                 <div className={styles.menu}>
                     <p className={`${styles.menuItem} ${styles.active}`}>Calendar</p>

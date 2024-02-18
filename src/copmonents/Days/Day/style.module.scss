@@ -1,5 +1,6 @@
 @import "@/variables";
 .day {
+  user-select: none;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -9,7 +10,7 @@
   padding: 12px;
   border: 1px solid $black-500;
   border-radius: 12px;
-  min-height: 135px;
+  min-height: 120px;
   font-size: 22px;
 }
 .dayTop{

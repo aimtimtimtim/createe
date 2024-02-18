@@ -1,4 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
+import getDaysInMonth from "../utils/daysInMonth.js";
 
 const initialState = {
 	months: [
@@ -11,7 +12,7 @@ const initialState = {
 		{
 			id: 2,
 			name: "February",
-			days: 28,
+			days: getDaysInMonth(1, 2024),
 			date: []// 29 в високосном году
 		},
 		{

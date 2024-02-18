@@ -2,8 +2,11 @@ import React, { useState} from 'react';
 import styles from './style.module.scss'
 import {Plus} from 'lucide-react';
 
-const Day = ({day}) => {
+const Day = ({day, monthToChange, currentMonth, currentDate}) => {
+    
+    
     const [hovered, setHovered] = useState(false)
+    
     
     const handleHover = () => {
         setHovered(!hovered)
@@ -16,8 +19,10 @@ const Day = ({day}) => {
             onMouseLeave={handleHover}>
             <div className={styles.dayTop}>
                 <span className={styles.date}>{day}</span>
-                <span className={styles.today}>Today</span>
-                
+                {(monthToChange === currentMonth) && (day === currentDate) ?
+                    <span className={styles.today}>Today</span> : null}
+            
+            
             </div>
             
             

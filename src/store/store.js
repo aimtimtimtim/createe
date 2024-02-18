@@ -1,9 +1,11 @@
 import {configureStore} from "@reduxjs/toolkit";
 import monthsReducer from './monthsSlice.js'
+import daysOfWeekReducer from './daysOfWeek.js'
 
 const store = configureStore({
 	reducer: {
-		months: monthsReducer
+		months: monthsReducer,
+		daysOfWeek: daysOfWeekReducer,
 	}
 })
 

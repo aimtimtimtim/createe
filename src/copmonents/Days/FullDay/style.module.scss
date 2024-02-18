@@ -1,0 +1,13 @@
+@import "@/variables";
+.fullDay {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 20px;
+  border: 1px solid $black-800;
+  border-radius: 16px;
+  flex: 1;
+}
+.date{
+  font-size: 36px;
+}

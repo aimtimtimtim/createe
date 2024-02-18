@@ -4,7 +4,6 @@ import {useSelector} from "react-redux";
 
 import DaysOfWeek from "../DaysOfWeek/DaysOfWeek.jsx";
 import Day from "../Days/Day/Day.jsx";
-import DayEmpty from "../Days/DayEmpty/DayEmpty.jsx";
 import styles from './style.module.scss'
 import calendarForRender from "../../utils/daysForRender.js";
 
@@ -18,9 +17,9 @@ const Calendar = () => {
 	const firstDayOfMonth = new Date(2024, monthToChange, 1).getDay()
 	const calendarDays = calendarForRender(months[monthToChange].days, firstDayOfMonth)
 	
+	const currentDay = (monthToChange === currentMonth) && (calendarDays.find(day => day === currentDate))
 	
 	const currentDayOfWeek = new Date().getDay();
-
 	
 	
 	const handleNextMonth = () => {
@@ -40,7 +39,8 @@ const Calendar = () => {
 			<button
 				className={`${styles.button} ${monthToChange === 0 ? styles.disabled : ''}`}
 				onClick={() => {
-				handlePrevMonth()}}><ChevronLeft/>
+					handlePrevMonth()
+				}}><ChevronLeft/>
 			</button>
 			
 			<span className={styles.month}>{months[monthToChange].name}, 2024</span>
@@ -48,21 +48,19 @@ const Calendar = () => {
 			<button
 				className={`${styles.button} ${monthToChange === 11 ? styles.disabled : ''}`}
 				onClick={() => {
-				handleNextMonth()}}><ChevronRight/>
+					handleNextMonth()
+				}}><ChevronRight/>
 			</button>
 		</div>
 		
 		<div className={styles.days}>
 			{calendarDays.map(day => (
-				day === null ? <p></p> : (
-					(day === currentDate) && (monthToChange === currentMonth) ?
-						<Day
-							day={day}
-							currentMonth={currentMonth}
-							monthToChange={monthToChange}
-							currentDate={currentDate}/> :
-						<DayEmpty day={day}/>
-				)))}
+				day === null ? <p></p> :
+					<Day
+						day={day}
+						currentDay={currentDay}
+						selectedMonth={months[monthToChange]}/>
+			))}
 		
 		</div>
 		<DaysOfWeek currentDayOfWeek={currentDayOfWeek}/>

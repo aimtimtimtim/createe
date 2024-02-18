@@ -5,29 +5,45 @@
   flex-direction: column;
   position: relative;
 
-  background-color: $black-600;
+  background-color: $black-800;
   color: $black-500;
   padding: 12px;
-  border: 1px solid $black-500;
   border-radius: 12px;
   min-height: 120px;
   font-size: 22px;
+  &:hover{
+    transition: background-color .2s ease-in-out;
+    background-color: $black-700;
+  }
+}
+
+.today{
+  background-color: $black-600;
+  color: $black-500;
+  border: 1px solid $black-500;
+}
+.todayBadge {
+  font-weight: 400;
+  color: $black-50;
+  font-size: 14px;
 }
 .dayTop{
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.date, .today {
-  font-size: 28px;
+.date {
+  font-size: 24px;
+  font-weight: 400;
+  color: $black-450;
+}
+.currentDate {
   font-weight: 400;
   color: $black-50;
 }
-.today{
-  font-size: 14px;
-}
 .add{
-  transition: transform 2s ease-in-out;
+  opacity: 0;
+  transition: opacity 0.6s ease;
   display: flex;
   position: absolute;
   top: 50%;
@@ -43,4 +59,7 @@
   border-spacing: 100px;
 
 
+}
+.add.visible {
+  opacity: 1;
 }

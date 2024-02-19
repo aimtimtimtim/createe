@@ -1,34 +1,52 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {ChevronRight, ChevronLeft} from 'lucide-react';
 import {useSelector} from "react-redux";
+import {Outlet, useNavigate, useParams} from "react-router-dom";
+import DaysOfWeek from "src/copmonents/DaysOfWeek/DaysOfWeek.jsx";
+import calendarForRender from "src/utils/daysForRender.js";
 
-import DaysOfWeek from "../DaysOfWeek/DaysOfWeek.jsx";
-import Day from "../Days/Day/Day.jsx";
-import styles from './style.module.scss'
-import calendarForRender from "../../utils/daysForRender.js";
+
+import styles from './styles.module.scss'
+
 
 const Calendar = () => {
-	const currentMonth = new Date().getMonth()
-	const currentDate = new Date().getDate()
-	
+	const navigate = useNavigate()
+	const currentMonth = useSelector(state => state.currentMonth.currentMonth)
 	const months = useSelector(state => state.months.months)
+	const monthNames = months.map(month => month.name.toLowerCase())
 	
 	const [monthToChange, setMonthToChange] = useState(currentMonth)
+	const {month} = useParams()
+
+	useEffect(() => {
+		
+		if(!monthNames.includes(month)){
+			navigate('/')
+		}else{
+			navigate(`/calendar/${month}`)
+			const indexOfMonth = monthNames.indexOf(month)
+			setMonthToChange(indexOfMonth)
+		}
+	}, [month]);
+
+	
 	const firstDayOfMonth = new Date(2024, monthToChange, 1).getDay()
 	const calendarDays = calendarForRender(months[monthToChange].days, firstDayOfMonth)
-	
-	const currentDay = (monthToChange === currentMonth) && (calendarDays.find(day => day === currentDate))
 	
 	const currentDayOfWeek = new Date().getDay();
 	
 	
 	const handleNextMonth = () => {
+		
 		if (monthToChange < 11) {
+			navigate(`/calendar/${months[monthToChange + 1].name.toLowerCase()}`)
 			setMonthToChange(prevMonth => prevMonth + 1)
+			
 		}
 	}
 	const handlePrevMonth = () => {
 		if (monthToChange > 0) {
+			navigate(`/calendar/${months[monthToChange - 1].name.toLowerCase()}`)
 			setMonthToChange(prevMonth => prevMonth - 1)
 		}
 	}
@@ -53,16 +71,7 @@ const Calendar = () => {
 			</button>
 		</div>
 		
-		<div className={styles.days}>
-			{calendarDays.map(day => (
-				day === null ? <p></p> :
-					<Day
-						day={day}
-						currentDay={currentDay}
-						selectedMonth={months[monthToChange]}/>
-			))}
-		
-		</div>
+		<Outlet context={[calendarDays, monthToChange]}/> {/*Month*/}
 		<DaysOfWeek currentDayOfWeek={currentDayOfWeek}/>
 	</div>);
 };

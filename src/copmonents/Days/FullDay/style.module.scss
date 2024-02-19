@@ -2,12 +2,26 @@
 .fullDay {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 4px;
   padding: 20px;
   border: 1px solid $black-800;
   border-radius: 16px;
   flex: 1;
 }
-.date{
-  font-size: 36px;
+.day{
+  font-size: 64px;
+}
+.month{
+  font-size: 16px;
+  color: $black-400;
+}
+.button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 12px;
+  background-color: $black-800;
+  border: none;
+  color: white;
 }

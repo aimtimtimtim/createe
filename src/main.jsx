@@ -1,10 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import FullDay from "./copmonents/Days/FullDay/FullDay.jsx";
+import {useSelector} from "react-redux";
+import FullDay from "src/copmonents/Days/FullDay/FullDay.jsx";
+import Month from "src/copmonents/Month/Month.jsx";
+
+
 import Calendar from "./copmonents/Calendar/Calendar.jsx";
 
-
-import Root from "./routes/Root.jsx";
 import App from './App.jsx'
 import './index.scss'
 
@@ -19,16 +21,26 @@ const router = createBrowserRouter([{
 	</div>,
 	children: [
 		{
-			path: '/day',
-			element: <FullDay/>
+			path: `calendar`,
+			element: <Calendar/>,
+			children: [
+				{
+					path: ':month',
+					element: <Month/>,
+					children: [{
+						path: 'day',
+						element: <FullDay/>
+					},]
+				},
+				{
+					index: true,
+					path: '/calendar/month',
+					element: <Month/>,
+				},
+			]
 		},
-		{
-			index: true,
-			element: <Calendar />
-		}
 	
 	]
-	
 }])
 
 ReactDOM.createRoot(document.getElementById("root")).render(

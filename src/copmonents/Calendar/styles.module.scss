@@ -23,13 +23,6 @@
   text-align: center;
 }
 
-.days {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-gap: 10px; /* Пространство между элементами */
-}
-
-
 .button{
   display: flex;
   align-items: center;

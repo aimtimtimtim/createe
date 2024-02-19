@@ -1,17 +1,24 @@
 import React, { useState} from 'react';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import styles from './style.module.scss'
 import {Plus} from 'lucide-react';
-import  {setSelectedDay} from '../../../store/selectedDay.js'
+import  {setSelectedDay} from 'src/store/selectedDay.js'
 
 
-const Day = ({day, currentDay, selectedMonth}) => {
+const Day = ({dayInCalendar, selectedMonth}) => {
+
+    
+    const months = useSelector(state => state.months.months)
+    const currentDate = useSelector(state => state.currentDate.currentDate)
+    const currentMonth = useSelector(state => state.currentMonth.currentMonth)
     const [hovered, setHovered] = useState(false)
     const navigate = useNavigate()
     const dispatch = useDispatch()
     
-    const isToday = currentDay === day
+    const isToday = currentDate === dayInCalendar && selectedMonth === currentMonth
+
+
 
 
     const handleHover = () => {
@@ -19,20 +26,25 @@ const Day = ({day, currentDay, selectedMonth}) => {
         setHovered(!hovered)
     }
     
-    const selectDay = (day, month) => {
+    const selectDay = (day, months, month) => {
         dispatch(setSelectedDay({day, month }))
-        navigate('/day')
+        navigate(`/calendar`)
+        
     }
 
     return (
         <div
             className={`${styles.day} ${isToday && styles.today}`}
-            onClick={()=>{selectDay(day, selectedMonth.name)}}
+            onClick={()=>{selectDay(dayInCalendar, months, selectedMonth)}}
             onMouseEnter={handleHover}
             onMouseLeave={handleHover}>
             
             <div className={styles.dayTop}>
-                <span className={`${styles.date} ${isToday && styles.currentDate}`}>{day}</span>
+                <span
+                    className={`${styles.date} ${isToday && styles.currentDate}`}>
+                    {dayInCalendar}
+                </span>
+                
                 {isToday  && <span className={styles.todayBadge}>Today</span>}
             
             

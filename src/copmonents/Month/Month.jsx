@@ -4,14 +4,15 @@ import styles from "./styles.module.scss";
 import Day from "src/copmonents/Days/Day/Day.jsx";
 
 export const Month = () => {
-	const [calendarDays, monthToChange] = useOutletContext()
+	const [calendarDays, monthToChange, monthPath] = useOutletContext()
 
 	return (
 		<div className={styles.days}>
 			{calendarDays.map((dayInCalendar, i) => (
 				dayInCalendar === null ? <p></p> :
 					<Day
-						key={i}
+						key={dayInCalendar}
+						monthPath={monthPath}
 						dayInCalendar={dayInCalendar}
 						selectedMonth={monthToChange}/>
 			))}

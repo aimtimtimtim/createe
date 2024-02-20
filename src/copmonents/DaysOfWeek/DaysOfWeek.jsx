@@ -9,9 +9,8 @@ export const DaysOfWeek = ({currentDayOfWeek}) => {
 		<div className={styles.daysOfWeek}>
 			{daysOfWeek.map((day, i) => (
 				<span
-					key={i}
 					className={`${styles.day} ${currentDayOfWeek === day.day ? styles.activeDay : ''}`}
-					  key={day.day}>{day.name}</span>
+					key={day.day}>{day.name}</span>
 			))}
 		</div>
 	)

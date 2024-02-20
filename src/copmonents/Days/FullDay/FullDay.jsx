@@ -1,35 +1,31 @@
-import {ChevronLeft} from "lucide-react";
+import {ChevronLeft,CircleFadingPlus} from "lucide-react";
 import React from "react";
-import {useSelector} from "react-redux";
-import {Link, useNavigate, useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import styles from './style.module.scss'
 
 const FullDay = () => {
-	const params = useParams()
-	console.log(params)
 	const navigate = useNavigate()
-	const {day, month} = useSelector(state => state.selectedDay.selectedDay)
-	const months = useSelector(state => state.months.months)
+	const {day, month} = useParams()
+	
 	const handleBack = () => {
-		navigate('/')
+		navigate(`/calendar/${month}`)
 	}
 	
 	return (
 		<div className={styles.fullDay}>
-			<p className={styles.day}>{day}</p>
-			<span className={styles.month}>{months[month].name}</span>
-			<span>
-			
-			<button
-				className={`${styles.button}`}
-				onClick={() => {
-					handleBack()
-				}}><ChevronLeft/>
+			<div className={styles.sider}>
+			<button className={styles.backBtn} onClick={() => {
+				handleBack()
+			}}>
+				<ChevronLeft size={16} color="#ffffff" strokeWidth={1.5}/>
+				<span>Back</span>
 			</button>
-			</span>
-			<h1 style={{
-				fontSize: '140px'
-			}}>Дидар Хуйдрын</h1>
+			<span className={styles.date}>{day} {month.charAt(0).toUpperCase() + month.slice(1)}</span>
+			<button className={styles.addNewButton}>
+				<CircleFadingPlus className={styles.addIcon} color="#ffffff" strokeWidth={1.5} />
+				New task
+			</button>
+			</div>
 		</div>
 	)
 }

@@ -27,19 +27,15 @@ const router = createBrowserRouter([{
 				{
 					path: ':month',
 					element: <Month/>,
-					children: [{
-						path: 'day',
-						element: <FullDay/>
-					},]
+					children: []
 				},
-				{
-					index: true,
-					path: '/calendar/month',
-					element: <Month/>,
-				},
+			
 			]
 		},
-	
+		{
+			path: 'calendar/:month/:day',
+			element: <FullDay/>
+		},
 	]
 }])
 

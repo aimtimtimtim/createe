@@ -4,6 +4,7 @@ import daysOfWeekReducer from './daysOfWeek.js'
 import selectedDayReducer from './selectedDay.js'
 import currentDateReducer from './currentDate.js'
 import currentMonthReducer from  './currentMonth.js'
+import currentDayOfWeekReducer from  './currentDayOfWeek.js'
 
 const store = configureStore({
 	reducer: {
@@ -11,6 +12,7 @@ const store = configureStore({
 		daysOfWeek: daysOfWeekReducer,
 		selectedDay: selectedDayReducer,
 		currentDate: currentDateReducer,
+		currentDayOfWeek: currentDayOfWeekReducer,
 		currentMonth: currentMonthReducer,
 		
 	}

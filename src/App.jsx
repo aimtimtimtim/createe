@@ -7,9 +7,6 @@ import Sidebar from "./copmonents/Sidebar/Sidebar.jsx";
 import store from './store/store.js'
 
 function App() {
-	const {pathname} = useLocation()
-	console.log(pathname)
-	
 	return (<Provider store={store}>
 		<div className='home'>
 			<Sidebar/>

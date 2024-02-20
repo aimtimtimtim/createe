@@ -7,7 +7,7 @@ import Sidebar from "./copmonents/Sidebar/Sidebar.jsx";
 import store from './store/store.js'
 
 function App() {
-	return (<Provider store={store}>
+	return (<Provider  store={store}>
 		<div className='home'>
 			<Sidebar/>
 			<Outlet/>

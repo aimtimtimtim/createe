@@ -13,7 +13,7 @@ import './index.scss'
 import {createBrowserRouter, Link, RouterProvider} from "react-router-dom";
 
 const router = createBrowserRouter([{
-	path: '/',
+	path: '/red',
 	element: <App/>,
 	errorElement: <div>
 		<p>404 page not found</p>

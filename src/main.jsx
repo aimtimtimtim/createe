@@ -13,7 +13,7 @@ import './index.scss'
 import {createBrowserRouter, Link, RouterProvider} from "react-router-dom";
 
 const router = createBrowserRouter([{
-	path: '/red',
+	path: '/',
 	element: <App/>,
 	errorElement: <div>
 		<p>404 page not found</p>
@@ -37,7 +37,7 @@ const router = createBrowserRouter([{
 			element: <FullDay/>
 		},
 	]
-}])
+}], {basename: '/calendar/february'})
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<React.StrictMode>

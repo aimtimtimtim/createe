@@ -100,7 +100,7 @@ const router = createBrowserRouter([{
 			element: <FullDay/>
 		},
 	]
-}], {basename: `/`})
+}], {basename: `/calendar/`})
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<React.StrictMode>

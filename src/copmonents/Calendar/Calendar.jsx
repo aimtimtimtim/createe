@@ -55,8 +55,7 @@ const Calendar = () => {
 					}}><ChevronRight/>
 				</button>
 			</div>
-			
-			<Month calendarDays={calendarDays} monthToChange={monthToChange}/>
+			<Outlet context={[calendarDays, monthToChange ]}/>
 			<DaysOfWeek currentDayOfWeek={currentDayOfWeek}/>
 		</div>);
 };

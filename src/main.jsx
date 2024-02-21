@@ -21,14 +21,15 @@ const router = createBrowserRouter([{
 		<Link to={'/calendar'}>Back</Link>
 	</div>,
 	children: [{
-			index: true,
-			element: <Calendar/>,
-	       },
-		   {
-			   path: '/:monthDay',
-			    element: <FullDay/>
-		   },]
-}],)
+		path: 'calendar',
+		element: <Calendar/>,
+		children: [{path: 'month', element: <Month/>}]
+	},
+		{
+			path: '/:monthDay',
+			element: <FullDay/>
+		},]
+}],{basename: '/calendar/month'})
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<React.StrictMode>

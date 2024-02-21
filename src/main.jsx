@@ -18,14 +18,14 @@ const router = createBrowserRouter([{
 	element: <App/>,
 	errorElement: <div>
 		<p>404 page not found</p>
-		<Link to={'/'}>Back</Link>
+		<Link to={'/calendar'}>Back</Link>
 	</div>,
 	children: [{
 			index: true,
 			element: <Calendar/>,
 	       },
 		   {
-			   path: 'calendar/:month-day',
+			   path: '/:monthDay',
 			    element: <FullDay/>
 		   },]
 }],)

@@ -1,14 +1,15 @@
 import {ChevronLeft,CircleFadingPlus} from "lucide-react";
 import React from "react";
+import {useSelector} from "react-redux";
 import {useNavigate, useParams} from "react-router-dom";
 import styles from './style.module.scss'
 
 const FullDay = () => {
+	const {day, month} = useSelector(state => state.selectedDay.selectedDay)
 	const navigate = useNavigate()
-	const {day, month} = useParams()
 	
 	const handleBack = () => {
-		navigate(`/calendar/${month}`)
+		navigate(`/`)
 	}
 	
 	return (
@@ -20,9 +21,9 @@ const FullDay = () => {
 				<ChevronLeft size={16} color="#ffffff" strokeWidth={1.5}/>
 				<span>Back</span>
 			</button>
-			<span className={styles.date}>{day} {month.charAt(0).toUpperCase() + month.slice(1)}</span>
+			<span className={styles.date}>{day} {month}</span>
 			<button className={styles.addNewButton}>
-				<CircleFadingPlus className={styles.addIcon} color="#ffffff" strokeWidth={1.5} />
+				<CircleFadingPlus color="#ffffff" strokeWidth={1.5} />
 				New task
 			</button>
 			</div>

@@ -6,7 +6,7 @@ import {Plus} from 'lucide-react';
 import {setSelectedDay} from 'src/store/selectedDay.js'
 
 
-const Day = ({dayInCalendar, changeCurrentMonth, monthPath}) => {
+const Day = ({dayInCalendar, monthToChange}) => {
 	
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
@@ -19,7 +19,7 @@ const Day = ({dayInCalendar, changeCurrentMonth, monthPath}) => {
 		state.months.months))
 	const [hovered, setHovered] = useState(false)
 	
-	const isToday = currentDate === dayInCalendar && changeCurrentMonth === currentMonth
+	const isToday = currentDate === dayInCalendar && monthToChange === currentMonth
 	
 	const handleHover = () => {
 		setHovered(!hovered)
@@ -28,7 +28,8 @@ const Day = ({dayInCalendar, changeCurrentMonth, monthPath}) => {
 	const selectDay = useCallback(
 		(day, month) => {
 			dispatch(setSelectedDay({day, month}))
-			navigate(`/calendar/${month}/${day}`)
+			const monthPath = month.toLowerCase()
+			navigate(`/${monthPath}-${dayInCalendar}`)
 		}, [dispatch, navigate]);
 	
 	
@@ -36,7 +37,7 @@ const Day = ({dayInCalendar, changeCurrentMonth, monthPath}) => {
 		<div
 			className={`${styles.day} ${isToday && styles.today}`}
 			onClick={() => {
-				selectDay(dayInCalendar, monthPath)
+				selectDay(dayInCalendar, months[monthToChange].name)
 			}}
 			onMouseEnter={handleHover}
 			onMouseLeave={handleHover}>

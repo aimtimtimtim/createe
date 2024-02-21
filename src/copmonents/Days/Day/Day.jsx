@@ -6,7 +6,7 @@ import {Plus} from 'lucide-react';
 import {setSelectedDay} from 'src/store/selectedDay.js'
 
 
-const Day = ({dayInCalendar, selectedMonth, monthPath}) => {
+const Day = ({dayInCalendar, changeCurrentMonth, monthPath}) => {
 	
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
@@ -19,7 +19,7 @@ const Day = ({dayInCalendar, selectedMonth, monthPath}) => {
 		state.months.months))
 	const [hovered, setHovered] = useState(false)
 	
-	const isToday = currentDate === dayInCalendar && selectedMonth === currentMonth
+	const isToday = currentDate === dayInCalendar && changeCurrentMonth === currentMonth
 	
 	const handleHover = () => {
 		setHovered(!hovered)

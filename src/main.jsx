@@ -14,22 +14,30 @@ import './index.scss'
 import {createBrowserRouter, Link, RouterProvider} from "react-router-dom";
 
 const router = createBrowserRouter([{
-	path: '/',
-	element: <App/>,
-	errorElement: <div>
-		<p>404 page not found</p>
-		<Link to={'/calendar'}>Back</Link>
-	</div>,
-	children: [{
-		path: 'calendar',
-		element: <Calendar/>,
-		children: [{path: 'month', element: <Month/>}]
-	},
-		{
-			path: '/:monthDay',
-			element: <FullDay/>
-		},]
-}],{basename: '/calendar/month'})
+		path: '/',
+		element: <App/>,
+		errorElement: <div>
+			<p>404 page not found</p>
+			<Link to={'/calendar'}>Back</Link>
+		</div>,
+		children: [
+			{
+				
+				path: 'calendar',
+				element: <Calendar/>,
+				children: [{
+					path: ':month',
+					element: <Month/>
+				}]
+			},
+			{
+				path: 'calendar/:month/:day',
+				element: <FullDay/>
+			},
+		]
+	}
+	],
+)
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<React.StrictMode>

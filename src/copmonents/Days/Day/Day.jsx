@@ -29,7 +29,7 @@ const Day = ({dayInCalendar, monthToChange}) => {
 		(day, month) => {
 			dispatch(setSelectedDay({day, month}))
 			const monthPath = month.toLowerCase()
-			navigate(`/${monthPath}-${day}`)
+			navigate(`/calendar/${monthPath}/${day}`)
 		}, [dispatch, navigate]);
 	
 	

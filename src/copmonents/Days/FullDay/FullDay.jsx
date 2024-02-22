@@ -9,7 +9,8 @@ const FullDay = () => {
 	const navigate = useNavigate()
 	
 	const handleBack = () => {
-		navigate(`/`)
+		console.log(month.toLowerCase())
+		navigate(`/calendar/${month.toLowerCase()}`)
 	}
 	
 	return (

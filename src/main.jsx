@@ -36,7 +36,7 @@ const router = createBrowserRouter([{
 			},
 		]
 	}
-	],{basename: '/calendar/:month/'}
+	],
 )
 
 ReactDOM.createRoot(document.getElementById("root")).render(

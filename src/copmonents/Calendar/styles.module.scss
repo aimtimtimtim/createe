@@ -9,12 +9,14 @@
   border-radius: 16px;
   flex: 1;
 }
-.header{
+
+.header {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 20px;
 }
+
 .month {
   width: 200px;
   font-size: 22px;
@@ -23,7 +25,7 @@
   text-align: center;
 }
 
-.button{
+.button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,8 +34,14 @@
   background-color: $black-800;
   border: none;
   color: white;
+
+  &:hover {
+    cursor: pointer;
+
+  }
 }
-.disabled{
+
+.disabled {
   border: $black-500;
   background-color: $black-900;
 }

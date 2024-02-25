@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import getDaysInMonth from "../utils/daysInMonth.js";
+
 
 const initialState = {
 	currentDate: new Date().getDate()

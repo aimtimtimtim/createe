@@ -1,13 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import {useSelector} from "react-redux";
-import FullDay from "src/copmonents/Days/FullDay/FullDay.jsx";
-import Month from "src/copmonents/Month/Month.jsx";
-import getDaysInMonth from "src/utils/daysInMonth.js";
-
-
-import Calendar from "./copmonents/Calendar/Calendar.jsx";
-
+import FullDay from "src/components/Days/FullDay/FullDay.jsx";
+import Month from "src/components/Month/Month.jsx";
+import Calendar from "./components/Calendar/Calendar.jsx";
 import App from './App.jsx'
 import './index.scss'
 

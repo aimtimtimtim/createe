@@ -2,8 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {ChevronRight, ChevronLeft} from 'lucide-react';
 import {useSelector} from "react-redux";
 import {Outlet, useNavigate, useParams} from "react-router-dom";
-import DaysOfWeek from "src/copmonents/DaysOfWeek/DaysOfWeek.jsx";
-import Month from "src/copmonents/Month/Month.jsx";
+import DaysOfWeek from "src/components/DaysOfWeek/DaysOfWeek.jsx";
 import calendarForRender from "src/utils/daysForRender.js";
 
 

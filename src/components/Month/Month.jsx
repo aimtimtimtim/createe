@@ -3,7 +3,7 @@ import React, {} from "react";
 import {useOutletContext} from "react-router-dom";
 
 import styles from "./styles.module.scss";
-import Day from "src/copmonents/Days/Day/Day.jsx";
+import Day from "src/components/Days/Day/Day.jsx";
 
 export const Month = () => {
 	const [calendarDays, monthToChange]=useOutletContext()

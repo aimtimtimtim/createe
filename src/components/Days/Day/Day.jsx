@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {useNavigate, useParams} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import styles from './style.module.scss'
 import {Plus} from 'lucide-react';
 import {setSelectedDay} from 'src/store/selectedDay.js'
@@ -23,7 +23,7 @@ const Day = React.memo(({dayInCalendar, monthToChange}) => {
 		const filtered = tasks.filter(task => task.day === dayInCalendar && task.month === months[monthToChange].name.toLowerCase())
 		setCurrentTasks(filtered)
 	}, [tasks, dayInCalendar, monthToChange])
-	console.log(currentTasks)
+
 	const [hovered, setHovered] = useState(false)
 	
 	const isToday = currentDate === dayInCalendar && monthToChange === currentMonth

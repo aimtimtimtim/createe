@@ -65,7 +65,7 @@ const NewNote = ({handleOpenNewNote}) => {
 				<label className={styles.label}>Title</label>
 				<input
 					className={styles.input}
-					placeholder={'Title'}
+					placeholder={'Start here'}
 					onChange={handleTitle}/>
 				
 				{titleError.error && (
@@ -75,10 +75,10 @@ const NewNote = ({handleOpenNewNote}) => {
 					</span>
 				)}
 				
-				<label className={styles.label}>Title</label>
+				<label className={styles.label}>Body</label>
 				<textarea
 					className={styles.textArea}
-					placeholder={'Title'}
+					placeholder={'Your story'}
 					onChange={(e) => setContent(e.target.value)}/>
 				
 				{contentError.error && (

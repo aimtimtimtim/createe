@@ -27,7 +27,7 @@ const TaskCard = ({title, content, time, id}) => {
 			<p className={styles.taskContent}>{content}</p>
 			{
 				isOpen && (
-					<div className={styles.modal}>
+					<div className={styles.modal} onMouseLeave={handleOpen}>
 						<div className={styles.options}>
 							<span>Options</span>
 							<X className={styles.icn} size={16} strokeWidth={1.5} onClick={handleOpen}/>

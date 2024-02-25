@@ -27,9 +27,17 @@ const NewNote = ({handleOpenNewNote}) => {
 	};
 	
 	const createNewNote = (month, day, title, content) => {
-		const hours = new Date().getHours()
-		const minutes = new Date().getMinutes()
-		const time = `${hours}:${minutes}`
+		const getTime = () => {
+			const hours = new Date().getHours();
+			const minutes = new Date().getMinutes();
+			let time = `${hours}:${minutes}`;
+			if (minutes < 10) {
+				time = `${hours}:0${minutes}`;
+			}
+			return time;
+		}
+		
+		const time = getTime()
 		const id = nanoid()
 		if (title.trim().length === 0) {
 			setTitleError({message: 'Field must be  filled', error: true})

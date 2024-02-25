@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from "react";
-import {useSelector} from "react-redux";
-import {useOutletContext, useParams} from "react-router-dom";
+import React, {} from "react";
+
+import {useOutletContext} from "react-router-dom";
 
 import styles from "./styles.module.scss";
 import Day from "src/copmonents/Days/Day/Day.jsx";

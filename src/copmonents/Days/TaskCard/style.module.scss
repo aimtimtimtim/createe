@@ -1,0 +1,105 @@
+@import "@/variables";
+
+.taskCard {
+  position: relative;
+  margin: 0 auto;
+  width: 600px;
+  border: $black-500;
+  padding: 22px;
+  border-radius: 16px;
+  border: 1px $black-600 solid;
+
+  word-wrap: break-word;
+  word-break: break-all
+
+}
+
+.top {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.taskTitle {
+  font-size: 34px;
+  margin-bottom: 6px;
+}
+
+.more {
+  cursor: pointer;
+  min-width: fit-content;
+  min-height: fit-content;
+  color: $black-450;
+  box-sizing: content-box;
+  padding: 6px;
+
+  &:hover {
+    transition: .2s ease-in-out;
+    color: $black-400;
+    border-radius: 8px;
+  }
+}
+
+.taskTime {
+  font-size: 14px;
+  margin-top: 34px;
+  color: $black-400;
+}
+
+.taskContent {
+  margin-top: 8px;
+  font-size: 22px;
+}
+
+.modal {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  width: fit-content;
+  padding: 8px;
+  border-radius: 12px;
+  background-color: $black-800;
+  font-size: 14px;
+}
+
+.delete {
+  padding: 8px 34px 8px 8px;
+  color: #ff3737;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 6px;
+
+  &:hover {
+    transition: .3s ease-in-out;
+    background-color: $black-600;
+  }
+
+}
+
+.options {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  span {
+    font-size: 12px;
+  }
+
+  .icn {
+    color: $black-450;
+
+    &:hover {
+      transition: .3s ease-in-out;
+      color: $black-300;
+    }
+  }
+}

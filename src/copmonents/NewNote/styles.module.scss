@@ -80,3 +80,16 @@
     background-color: $black-500;
   }
 }
+
+.errMessage{
+  border-radius: 6px;
+  padding: 2px 6px;
+  width: fit-content;
+  background-color: #720101;
+  font-weight: 400;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #ff8686;
+}

@@ -1,8 +1,23 @@
-import {XCircle} from "lucide-react";
-import React from 'react';
+import {nanoid} from "@reduxjs/toolkit";
+import {XCircle, AlertCircle} from "lucide-react";
+import React, {useState} from 'react';
+import {useDispatch} from "react-redux";
+import {useParams} from "react-router-dom";
 import styles from "./styles.module.scss";
+import {addNewNote} from 'src/store/tasksSlice.js'
 
 const NewNote = ({handleOpenNewNote}) => {
+	const dispatch = useDispatch()
+	const params = useParams()
+	const [title, setTitle] = useState('')
+	const [titleError, setTitleError] = useState({message: '', error: false})
+	const [content, setContent] = useState('')
+	const [contentError, setContentError] = useState({message: '', error: false})
+	
+	const handleTitle = (e) => {
+		setTitleError({message: '', error: false})
+		setTitle(e.target.value)
+	}
 	const handleCloseModal = () => {
 		handleOpenNewNote();
 	};
@@ -10,7 +25,24 @@ const NewNote = ({handleOpenNewNote}) => {
 	const handleFormClick = (event) => {
 		event.stopPropagation(); // Остановить всплытие события
 	};
-
+	
+	const createNewNote = (month, day, title, content) => {
+		const hours = new Date().getHours()
+		const minutes = new Date().getMinutes()
+		const time = `${hours}:${minutes}`
+		const id = nanoid()
+		if (title.trim().length === 0) {
+			setTitleError({message: 'Field must be  filled', error: true})
+			console.log(titleError)
+		} else if (content.trim().length === 0) {
+			setContentError({message: 'Field must be  filled', error: true})
+		} else {
+			dispatch(addNewNote({month, day, id, title, content, time}))
+			handleOpenNewNote()
+		}
+	}
+	
+	
 	return (
 		<div className={styles.blur} onClick={() => {
 			handleOpenNewNote()
@@ -23,10 +55,35 @@ const NewNote = ({handleOpenNewNote}) => {
 					}}/>
 				</div>
 				<label className={styles.label}>Title</label>
-				<input className={styles.input} placeholder={'Title'}/>
+				<input
+					className={styles.input}
+					placeholder={'Title'}
+					onChange={handleTitle}/>
+				
+				{titleError.error && (
+					<span className={styles.errMessage}>
+						<AlertCircle size={16} strokeWidth={1.5}/>
+						{titleError.message}
+					</span>
+				)}
+				
 				<label className={styles.label}>Title</label>
-				<textarea className={styles.textArea} placeholder={'Title'}/>
-				<button className={styles.addButton}>Add</button>
+				<textarea
+					className={styles.textArea}
+					placeholder={'Title'}
+					onChange={(e) => setContent(e.target.value)}/>
+				
+				{contentError.error && (
+					<span className={styles.errMessage}>
+						<AlertCircle size={16} strokeWidth={1.5}/>
+						{contentError.message}
+					</span>
+				)}
+				
+				<button type={'button'} className={styles.addButton} onClick={() => {
+					createNewNote(params.month, parseInt(params.day), title, content,)
+				}}>Add
+				</button>
 			</form>
 		</div>
 	);

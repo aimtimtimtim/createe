@@ -5,6 +5,8 @@ import selectedDayReducer from './selectedDay.js'
 import currentDateReducer from './currentDate.js'
 import currentMonthReducer from  './currentMonth.js'
 import currentDayOfWeekReducer from  './currentDayOfWeek.js'
+import tasksSliceReducer from  './tasksSlice.js'
+import isOpenNewNoteSliceReducer from  './isOpenNewNote.js'
 
 const store = configureStore({
 	reducer: {
@@ -14,6 +16,8 @@ const store = configureStore({
 		currentDate: currentDateReducer,
 		currentDayOfWeek: currentDayOfWeekReducer,
 		currentMonth: currentMonthReducer,
+		tasks: tasksSliceReducer,
+		isOpenNewNote: isOpenNewNoteSliceReducer
 		
 	}
 })

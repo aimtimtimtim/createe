@@ -30,6 +30,7 @@ const Calendar = () => {
 		}
 	}, [month, months, monthToChange]);
 	
+	
 	const handleNextMonth = () => {
 		if (monthToChange < 11) {
 			navigate(`/calendar/${months[monthToChange + 1].name.toLowerCase()}`)

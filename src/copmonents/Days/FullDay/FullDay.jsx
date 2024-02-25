@@ -1,9 +1,10 @@
 import {ChevronLeft, CircleFadingPlus} from "lucide-react";
 import React, {useEffect, useState} from "react";
-import {XCircle} from 'lucide-react';
 import {useDispatch, useSelector} from "react-redux";
-import {useFetcher, useNavigate, useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
+import TasksList from "src/copmonents/Days/TasksList/TasksList.jsx";
 import NewNote from "src/copmonents/NewNote/NewNote.jsx";
+import {openNewNote} from "src/store/isOpenNewNote.js";
 import {setSelectedDay} from "src/store/selectedDay.js";
 import styles from './style.module.scss'
 
@@ -11,18 +12,17 @@ const FullDay = () => {
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
 	const {month, day} = useParams()
-	const [newNote, setNewNote] = useState(false)
-	
-	useEffect(()=>{
+	const isOpenNewNote = useSelector(state => state.isOpenNewNote.isOpenNewNote)
+
+	useEffect(() => {
 		dispatch(setSelectedDay({day, month}))
 	}, [day])
-
+	
 	const handleOpenNewNote = () => {
-		setNewNote(prevState => !prevState)
+		dispatch(openNewNote())
 	}
 	
 	const handleBack = () => {
-		console.log(month.toLowerCase())
 		navigate(`/calendar/${month}`)
 	}
 	
@@ -50,11 +50,9 @@ const FullDay = () => {
 					Note
 				</button>
 			</div>
-			<div className={styles.empty}>
-				<h2>You don't have any note</h2>
-				<span onClick={()=>{handleOpenNewNote()}}>Create one</span>
-			</div>
-			{newNote && (<NewNote handleOpenNewNote={handleOpenNewNote}/>)}
+			
+			<TasksList handleOpenNewNote={handleOpenNewNote}/>
+			{isOpenNewNote && (<NewNote handleOpenNewNote={handleOpenNewNote}/>)}
 		</div>
 	)
 }

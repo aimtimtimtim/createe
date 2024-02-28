@@ -2,11 +2,11 @@ import {ChevronLeft, CircleFadingPlus} from "lucide-react";
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate, useParams} from "react-router-dom";
-import TasksList from "src/components/Days/TasksList/TasksList.jsx";
-import NewNote from "src/components/NewNote/NewNote.jsx";
-import {openNewNote} from "src/store/isOpenNewNote.js";
-import {setSelectedDay} from "src/store/selectedDay.js";
+import NewNote from "src/components/NewNote/NewNote.js";
+import {openNewNote} from "src/store/isOpenNewNote.ts";
+import {setSelectedDay} from "src/store/selectedDay.ts";
 import styles from './style.module.scss'
+import TasksList from "../TasksList/TasksList.tsx";
 
 const FullDay = () => {
 	const dispatch = useDispatch()

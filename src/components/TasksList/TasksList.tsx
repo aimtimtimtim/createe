@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
-import TaskCard from "src/components/Days/TaskCard/TaskCard.jsx";
 import styles from './style.module.scss'
+import TaskCard from "../TaskCard/TaskCard.tsx";
 
 const TasksList = ({handleOpenNewNote}) => {
 	const {day, month} = useParams()
@@ -11,7 +11,7 @@ const TasksList = ({handleOpenNewNote}) => {
 	
 	useEffect(() => {
 		const filtered = tasks.filter(task => task.day === parseInt(day) && task.month === month)
-		setCurrentTasks(prevState => filtered)
+		setCurrentTasks(filtered)
 	}, [tasks])
 	
 	if (currentTasks.length === 0) {

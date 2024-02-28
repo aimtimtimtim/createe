@@ -4,7 +4,7 @@ import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
 import {useParams} from "react-router-dom";
 import styles from "./styles.module.scss";
-import {addNewNote} from 'src/store/tasksSlice.js'
+import {addNewNote} from '../../store/tasksSlice.ts'
 
 const EditNote = ({handleOpenNewNote}) => {
 	const dispatch = useDispatch()
@@ -26,8 +26,8 @@ const EditNote = ({handleOpenNewNote}) => {
 		event.stopPropagation(); // Остановить всплытие события
 	};
 	
-	const createNewNote = (month, day, title, content) => {
-		const getTime = () => {
+	const createNewNote = (month: string, day: number, title: string, content: string) => {
+		const getTime = (): string => {
 			const hours = new Date().getHours();
 			const minutes = new Date().getMinutes();
 			let time = `${hours}:${minutes}`;
@@ -37,8 +37,8 @@ const EditNote = ({handleOpenNewNote}) => {
 			return time;
 		}
 		
-		const time = getTime()
-		const id = nanoid()
+		const time: string = getTime()
+		const id: string = nanoid()
 		if (title.trim().length === 0) {
 			setTitleError({message: 'Field must be  filled', error: true})
 			console.log(titleError)

@@ -1,10 +1,8 @@
-import './App.scss'
-import React from "react";
 import {Provider} from "react-redux";
 import {Outlet} from "react-router-dom";
-
-import Sidebar from "./components/Sidebar/Sidebar.jsx";
-import store from './store/store.js'
+import Sidebar from "./components/Sidebar/Sidebar.tsx";
+import store from './store/store.ts'
+import './App.scss'
 
 function App() {
 	return (

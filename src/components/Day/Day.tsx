@@ -3,11 +3,13 @@ import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import styles from './style.module.scss'
 import {Plus} from 'lucide-react';
-import {setSelectedDay} from 'src/store/selectedDay.js'
+import {setSelectedDay} from '../../store/selectedDay.ts'
+ interface DayProps {
+	 dayInCalendar: number,
+	 monthToChange: number,
+ }
 
-
-const Day = React.memo(({dayInCalendar, monthToChange}) => {
-
+const Day = React.memo(({dayInCalendar, monthToChange}: DayProps) => {
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
 	

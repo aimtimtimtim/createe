@@ -1,16 +1,14 @@
-import React, {} from "react";
-
 import {useOutletContext} from "react-router-dom";
-
 import styles from "./styles.module.scss";
-import Day from "src/components/Days/Day/Day.jsx";
+import Day from "../Day/Day.tsx";
+
 
 export const Month = () => {
-	const [calendarDays, monthToChange]=useOutletContext()
+	const [calendarDays, monthToChange]: number[]=useOutletContext()
 
 	return (
 		<div className={styles.days}>
-			{calendarDays.map((dayInCalendar, i) => (
+			{calendarDays.map((dayInCalendar: number, i: number) => (
 				dayInCalendar === null ? <p key={i}></p> :
 					<Day
 						key={i}

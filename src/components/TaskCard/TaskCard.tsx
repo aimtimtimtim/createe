@@ -1,11 +1,18 @@
 import {MoreVertical, Trash2, X, Pencil} from "lucide-react";
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {deleteNote, editNote} from "src/store/tasksSlice.js";
+import {deleteNote, editNote} from "src/store/tasksSlice.ts";
 import styles from './style.module.scss'
 import TextareaAutosize from 'react-textarea-autosize';
 
-const TaskCard = ({title, content, time, id}) => {
+interface TaskCardProps {
+	title: string,
+	content: string,
+	time: string,
+	id: string
+}
+
+const TaskCard = ({title, content, time, id}: TaskCardProps) => {
 	const dispatch = useDispatch()
 	const [isOpen, setIsOpen] = useState(false)
 	const tasks = useSelector(state => state.tasks.tasks)

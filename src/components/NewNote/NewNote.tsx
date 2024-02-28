@@ -4,7 +4,7 @@ import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
 import {useParams} from "react-router-dom";
 import styles from "./styles.module.scss";
-import {addNewNote} from 'src/store/tasksSlice.js'
+import {addNewNote} from 'src/store/tasksSlice.ts'
 
 const NewNote = ({handleOpenNewNote}) => {
 	const dispatch = useDispatch()

@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {ChevronRight, ChevronLeft} from 'lucide-react';
 import {useSelector} from "react-redux";
 import {Outlet, useNavigate, useParams} from "react-router-dom";
-import DaysOfWeek from "src/components/DaysOfWeek/DaysOfWeek.jsx";
-import calendarForRender from "src/utils/daysForRender.js";
+import calendarForRender from "../../utils/daysForRender.ts";
 
 
 import styles from './styles.module.scss'
+import DaysOfWeek from "../DaysOfWeek/DaysOfWeek.tsx";
 
 
 const Calendar = () => {
